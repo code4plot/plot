@@ -95,6 +95,6 @@ rawDat = cbind(rawDat, psf = psf)
 #convert leaseDate (mmyy) to new format with parseDate
 rawDat$leaseDate = unlist(lapply(rawDat$leaseDate, parseDate))
 
-write.csv(rawDat, "raw_data_191028.csv", row.names = F)
+write.csv(rawDat, "rawDat_191028.csv", row.names = F)
 
 
