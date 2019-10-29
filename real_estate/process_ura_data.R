@@ -62,7 +62,7 @@ parseDate = function(x){
 }
 
 #load .json file from URA
-dat = read_json("18-19_v2.json",flatten=F)
+dat = read_json("ura_rent_191012.json",flatten=F)
 dat = dat$Result
 
 #initiate data.frame object
