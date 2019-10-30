@@ -1,0 +1,13 @@
+name: rentalplot
+title:
+username:
+account: plotproject
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1395423
+bundleId: 2550419
+url: https://plotproject.shinyapps.io/rentalplot/
+when: 1572415245.59817
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: global.r
