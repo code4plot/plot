@@ -19,12 +19,12 @@ ui <- shinyUI(fluidPage(
                      choices = unique(condo$project),
                      multiple = F,
                      options = list(maxItems = 1, placeholder = 'Select a project'),
-                     selected = "THE HILLFORD"),
+                     selected = "THE SAIL @ MARINA BAY"),
       radioButtons("radio",
                    label = "rental price format",
-                   choices = list("rent per square feet" = "psf",
-                                  "rent per month" = "rent"),
-                   selected = "psf")
+                   choices = list("rent per month" = "rent",
+                                  "rent per square feet" = "psf"),
+                   selected = "rent")
       ),
     # Show a plot of the generated distribution
     mainPanel(
@@ -60,9 +60,9 @@ server <- shinyServer(function(input, output, session) {
       stat_summary(fun.y = function(z) {quantile(z, 0.75) }, geom = "line", color = "grey") +
       geom_jitter(data = subset(condo, project == input$name), aes(color = noOfBedRoom), position = position_jitter(0.2), size = 2) +
       labs(y = yLabel, x = "Lease Date (Quarterly)", color = "# Bed\nRoom") +
-      ggtitle(paste("Rental Stats @", input$name)) +
+      ggtitle(paste(input$name,"| DISTRICT",as.character(District))) +
       theme_bw() + 
-      theme(plot.title = element_text(size = 20, hjust = 0.5), legend.position = "right")
+      theme(plot.title = element_text(size = 15, hjust = 0.5), legend.position = "right")
   })
 })
 
