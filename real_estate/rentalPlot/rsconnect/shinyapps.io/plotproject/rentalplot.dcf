@@ -5,9 +5,9 @@ account: plotproject
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1395423
-bundleId: 2550419
+bundleId: 2553202
 url: https://plotproject.shinyapps.io/rentalplot/
-when: 1572415245.59817
+when: 1572491215.6974
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: global.r

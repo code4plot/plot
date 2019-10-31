@@ -1,0 +1,20 @@
+sample	stage
+ovary_sample.txt	ovary
+zygote_1.cell.txt	zygote
+cleavage_2.cell.txt	cleavage
+blastula_128.txt	128-cell
+blastula_1k.txt	1k-cell
+blastula_dome.txt	dome
+gastrula_50.epiboly.txt	50% epiboly
+gastrula_shield.txt	shield
+gastrula_75.epiboly.txt	75% epiboly
+segmentation_1.4ss.txt	1-4ss
+segmentation_14.19ss.txt	14-19ss
+segmentation_20.25ss.txt	20-25ss
+pharyngula_prim_5.txt	24 hpf
+pharyngula_prim_15.txt	30 hpf
+pharyngula_prim.25.txt	36 hpf
+hatching_long_pec.txt	48 hpf
+larval_protruding_mouth.txt	72 hpf
+larval_day_4.txt	4 dpf
+larval_day_5.txt	5 dpf

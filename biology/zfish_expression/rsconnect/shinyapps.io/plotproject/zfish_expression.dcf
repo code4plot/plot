@@ -1,0 +1,13 @@
+name: zfish_expression
+title: zfish_expression
+username:
+account: plotproject
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1405188
+bundleId: 2554297
+url: https://plotproject.shinyapps.io/zfish_expression/
+when: 1572526030.79535
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: helpers.R|plotExpression.R
