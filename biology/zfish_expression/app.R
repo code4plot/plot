@@ -1,44 +1,44 @@
 library(shiny)
 library(plotly)
+library(reshape2)
 library(plyr)
+library(shinycssloaders)
+
 
 ##helper functions here
-rowMedian = function(df){
-  df = apply(df, 1, median)
-  return(df)
+makeRelative <- function(x, ref){
+  for(i in ref$gene_name){
+    x$value[x$gene_name == i] <- x$value[x$gene_name == i]/ref$value[ref$gene_name == i]
+  }
+  x
 }
 
-rowRelative = function(df, ref, logScale = F){
-  if(tolower(ref) == "none"){
-    x = rowMedian(df)
+rowRelative = function(df, ref, logScale = F, zeroCorrect = 0.4416741){
+  if(tolower(ref) == "median"){
+    x <- ddply(df, ~gene_name, summarize, value = median(value))
+    x$value[x$value == 0] <- zeroCorrect
+    df <- makeRelative(df, x)
   } else {
-    x = df[,ref]
-    x[which(x == 0)] = 0.001
+    r <- subset(df, variable == ref)
+    r$value[r$value == 0] <- zeroCorrect
+    df <- makeRelative(df, r)
   }
-  df = df/x
   if(logScale == T){
-    df = log(df,2)
+    df$value <- log(df$value,2)
   }
   return(df)
 }
 
-makeExpressionDF = function(df){
-  temp = stack(df, select = -c(gene_name, gene_id))
-  times = nrow(temp)/nrow(df)
-  result = data.frame(gene_id = rep(df$gene_id, times), gene_name = rep(df$gene_name, times), 
-                      reads = temp$values, stage = temp$ind, stringsAsFactors = F)
-  return(result)
-}
 
-#load data file
-rawDat = read.table("data/zfish_expression.txt", header = T, sep = "\t", stringsAsFactors = F)
+#load expression file
+rawDat <- readRDS("data/rawDat3.RDS")
 
 #load sample-stage file
-stages = read.table("data/sample-stage.txt", header = T, sep = "\t", stringsAsFactors = F)
-stages = setNames(stages$stage, stages$sample)
+stages <- read.table("data/sample-stage.txt", header = T, stringsAsFactors = F, sep = "\t")
+stages <- stages$stage
 
-#cleanup column names
-rawDat = rename(rawDat, replace = stages)
+#choose a random number for spinner type
+n <- round(runif(1,1,8),0)
 
 ui <- shinyUI(fluidPage(
   
@@ -47,24 +47,21 @@ ui <- shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       # Select Genes here
-      selectizeInput("genes",
-                     label = "select genes of interest",
-                     choices = c(unique(rawDat$gene_name)),
+      selectizeInput(inputId= "genes",
+                     label = "select genes of interest (max 5)",
+                     choices = NULL,
                      multiple = T,
-                     options = list(maxItems = 5, placeholder = 'Select Genes'),
-                     selected = c("yap1","wwtr1")),
-                    
+                     options = list(maxItems = 5, placeholder = 'Select Genes')),
+                     
+      #choose absolute or relative                    
       radioButtons("absrel",
                    label = "expression format",
                    choices = list("absolute" = "abs",
                                   "relative" = "rel"),
                    selected = "abs"),
-      conditionalPanel(condition = "input.absrel == rel",
-                       selectInput("type",
-                                    label = "reference point",
-                                    choices = c("none", colnames(rawDat)[2:(ncol(rawDat)-1)]),
-                                    multiple = F,
-                                    selected = "zygote")),
+      # if relative, show options here
+      uiOutput('rel'),
+      #output log-scaled graph?
       radioButtons("logScale",
                    label = "log-scaled y-axis?",
                    choices = list("True" = T, "False" = F),
@@ -72,51 +69,64 @@ ui <- shinyUI(fluidPage(
     ),
     # Show a plot of the generated distribution
     mainPanel(
-      plotlyOutput("trendPlot", height = 500)
-    #  br(),
-    #  p("figure legend here")
+      withSpinner(plotlyOutput("trendPlot", height = 500), type = n)
     )
   )
 )
 )
 
-server <- shinyServer(function(input, output, session) {
-  
-  output$trendPlot <- renderPlotly({
-    
-    if (length(input$genes) == 0) {
-      input$genes = c("yap1","wwtr1")
-    }
-    #subset rawDat by genes
-    subDat = subset(rawDat, gene_name %in% input$genes)
-    #columns with expression data only
-    temp_ind = 2:(ncol(subDat)-1)
-    temp_df = subDat[,temp_ind]
-    #if user selects relative
-    if(input$absrel == "rel"){
-      subDat[,temp_ind] = rowRelative(temp_df,input$type,input$logScale)
-      yLab = "Relative gene expression"
-      if(input$logScale == T){
-        yLab = paste("log-scaled", tolower(yLab))
-      }
+server <- function(input, output, session) {
+  updateSelectizeInput(session = session, inputId = "genes", choices = rawDat$gene_name, 
+                       server = T, selected = c("yap1","wwtr1"))
+  df <- reactive({
+    if(length(input$genes) == 0){
+      subDat <- c()
     } else {
-      yLab = "Gene expression"
-      if(input$logScale == T){
-        subDat[,temp_ind] = log(temp_df,10)
-        yLab = paste("log-scaled", tolower(yLab))
-      }
+      #subGenes <- subset(genes, gene_name %in% input$genes)
+      subDat <- filter(rawDat, gene_name %in% input$genes)
+      subDat <- melt(subDat, id = c("gene_name", "gene_id"))
     }
-    plotDat = subDat
-    #stack up expression levels for plotting
-    plotDat = makeExpressionDF(plotDat)
-    
-    s = ggplot(plotDat, aes(x = stage, y = reads, color = gene_name, group = gene_name)) +
-      geom_line(size = 1.2) +
-      labs(y = yLab, x = "developmental stage", color = "gene") +
-      theme_bw() +
-      theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 12))
-    s
+    subDat
   })
-})
+  output$rel <- renderUI({
+    if(input$absrel == "rel"){
+      selectInput("type",
+                  label = "If 'relative', choose a reference point",
+                  choices = c("median", stages),
+                  multiple = F,
+                  selected = "zygote")
+    }
+  })
+  output$trendPlot <- renderPlotly({
+    subDat <- df()
+    if(length(subDat) == 0){
+      s <- ggplot() + ggtitle("select some genes") +geom_blank()
+    } else {
+      #if user selects relative
+      if(input$absrel == "rel"){
+        subDat <- rowRelative(subDat,input$type,input$logScale)
+        yLab <- "Relative gene expression"
+        if(input$logScale == T){
+          yLab <- paste("log-scaled", tolower(yLab))
+        }
+     } else {
+        yLab <- "Gene expression (read counts)"
+        if(input$logScale == T){
+          subDat$value <- log(subDat$value,10)
+          yLab <- paste("log-scaled", tolower(yLab))
+        }
+      }
+      plotDat <- subDat
+      colnames(plotDat) <- c("gene_name","gene_id","stage","reads")
+      s <- ggplot(plotDat, aes(x = stage, y = reads, color = gene_name, group = gene_id)) +
+        geom_path(size = 1.2) +
+        labs(y = yLab, x = "developmental stage", color = "gene") +
+        scale_color_brewer(palette = "Dark2") +
+        theme_bw() +
+        theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 12))
+    }
+    ggplotly(s)
+  })
+}
 
 shinyApp(ui = ui, server = server)

@@ -1,17 +1,19 @@
 library(ggplot2)
 library(plyr)
 
-#load data file
-rawDat = read.table("data/zfish_expression.txt", header = T, sep = "\t", stringsAsFactors = F)
+#load genes file
+gfile = read.table("data/zfish_genes.txt", header = T, sep = "\t", stringsAsFactors = F)
 
 #load sample-stage file
 stages = read.table("data/sample-stage.txt", header = T, sep = "\t", stringsAsFactors = F)
-stages = setNames(stages$stage, stages$sample)
+stages = c("gene_id", stages$stage, "gene_name")
 
 #some example
 ensemblExamples = c("ENSDARG00000068401","ENSDARG00000067719","ENSDARG00000042934","ENSDARG00000023062","ENSDARG00000077860","ENSDARG00000068409")
 
-#subset genes of interest
+#load data from files
+toPlot = subset(gfile, gene_id %in% ensemblExamples)
+plotDat = getData(toPlot)
 plotDat = subset(rawDat, gene_id %in% ensemblExamples)
 #cleanup column names
 plotDat = rename(plotDat, replace = stages)
@@ -61,3 +63,23 @@ makeExpressionDF = function(df){
   return(result)
 }
 
+getData = function(x, suf = "zfish_", ext = ".txt", fromDir = "data/", id = "gene_id"){
+  if(id == "gene_id"){
+    y = 1
+  } else {
+    y = 2
+  }
+  ind = unique(x$fileIndex)
+  for(i in ind){
+    genes = x[which(x$fileIndex %in% i), id]
+    i = as.character(i)
+    fileName = paste(fromDir,suf,i,ext,sep = "")
+    temp = read.table(fileName, header = F, sep = "\t", stringsAsFactors = F)
+    if(!exists("results")){
+      results = subset(temp, temp[,y] %in% genes)
+    } else {
+      results = rbind(results, subset(temp, temp[,y] %in% genes))
+    }
+  }
+  return(results)
+}

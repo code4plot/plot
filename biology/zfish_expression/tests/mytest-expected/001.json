@@ -1,0 +1,533 @@
+{
+  "input": {
+    ".clientValue-default-plotlyCrosstalkOpts": {
+      "on": "plotly_click",
+      "persistent": false,
+      "dynamic": false,
+      "selectize": false,
+      "opacityDim": 0.2,
+      "selected": {
+        "opacity": 1
+      },
+      "debounce": 0,
+      "color": [
+
+      ]
+    },
+    "absrel": "abs",
+    "genes": [
+      "wwtr1",
+      "dcaf8"
+    ],
+    "logScale": "TRUE",
+    "type": "24 hpf"
+  },
+  "output": {
+    "trendPlot": {
+      "x": {
+        "data": [
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "y": [
+              2.53997160403912,
+              3.05432187641804,
+              2.9019970496056,
+              2.6979062550837,
+              2.66724199252656,
+              2.46044507843874,
+              2.23678357748393,
+              2.32992112263901,
+              2.27267854026663,
+              2.26604782799,
+              2.27909969102556,
+              2.24676335038653,
+              2.21683508179257,
+              2.47816469166267,
+              2.3317079655308,
+              2.45725456402502,
+              2.47816469166267,
+              2.51369836174346,
+              2.54749452199121
+            ],
+            "text": [
+              "stage: ovary<br />reads: 2.5399716<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: zygote<br />reads: 3.0543219<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: cleavage<br />reads: 2.9019970<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 128-cell<br />reads: 2.6979063<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 1k-cell<br />reads: 2.6672420<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: dome<br />reads: 2.4604451<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 50% epiboly<br />reads: 2.2367836<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: shield<br />reads: 2.3299211<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 75% epiboly<br />reads: 2.2726785<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 1-4ss<br />reads: 2.2660478<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 14-19ss<br />reads: 2.2790997<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 20-25ss<br />reads: 2.2467634<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 24 hpf<br />reads: 2.2168351<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 30 hpf<br />reads: 2.4781647<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 36 hpf<br />reads: 2.3317080<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 48 hpf<br />reads: 2.4572546<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 72 hpf<br />reads: 2.4781647<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 4 dpf<br />reads: 2.5136984<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324",
+              "stage: 5 dpf<br />reads: 2.5474945<br />gene_name: dcaf8<br />gene_id: ENSDARG00000000324"
+            ],
+            "type": "scatter",
+            "mode": "lines",
+            "line": {
+              "width": 4.53543307086614,
+              "color": "rgba(27,158,119,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "dcaf8",
+            "legendgroup": "dcaf8",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "y": [
+              1.16361588717176,
+              0.29616725445065,
+              0.400253319977609,
+              1.23781833966282,
+              1.08574745023566,
+              1.27316965243054,
+              2.10980109836564,
+              2.27739207136282,
+              2.54222413943263,
+              2.29339743576475,
+              2.1753169499726,
+              2.35471174502116,
+              2.44728400317084,
+              2.18820012214885,
+              2.3894140984265,
+              2.20064370814945,
+              2.18820012214885,
+              2.36707228188001,
+              2.34723006417952
+            ],
+            "text": [
+              "stage: ovary<br />reads: 1.1636159<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: zygote<br />reads: 0.2961673<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: cleavage<br />reads: 0.4002533<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 128-cell<br />reads: 1.2378183<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 1k-cell<br />reads: 1.0857475<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: dome<br />reads: 1.2731697<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 50% epiboly<br />reads: 2.1098011<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: shield<br />reads: 2.2773921<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 75% epiboly<br />reads: 2.5422241<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 1-4ss<br />reads: 2.2933974<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 14-19ss<br />reads: 2.1753169<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 20-25ss<br />reads: 2.3547117<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 24 hpf<br />reads: 2.4472840<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 30 hpf<br />reads: 2.1882001<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 36 hpf<br />reads: 2.3894141<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 48 hpf<br />reads: 2.2006437<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 72 hpf<br />reads: 2.1882001<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 4 dpf<br />reads: 2.3670723<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719",
+              "stage: 5 dpf<br />reads: 2.3472301<br />gene_name: wwtr1<br />gene_id: ENSDARG00000067719"
+            ],
+            "type": "scatter",
+            "mode": "lines",
+            "line": {
+              "width": 4.53543307086614,
+              "color": "rgba(217,95,2,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "wwtr1",
+            "legendgroup": "wwtr1",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          }
+        ],
+        "layout": {
+          "margin": {
+            "t": 25.7412480974125,
+            "r": 7.30593607305936,
+            "b": 43.9463124394631,
+            "l": 31.4155251141553
+          },
+          "plot_bgcolor": "rgba(255,255,255,1)",
+          "paper_bgcolor": "rgba(255,255,255,1)",
+          "font": {
+            "color": "rgba(0,0,0,1)",
+            "family": "",
+            "size": 14.6118721461187
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              0.4,
+              19.6
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "ovary",
+              "zygote",
+              "cleavage",
+              "128-cell",
+              "1k-cell",
+              "dome",
+              "50% epiboly",
+              "shield",
+              "75% epiboly",
+              "1-4ss",
+              "14-19ss",
+              "20-25ss",
+              "24 hpf",
+              "30 hpf",
+              "36 hpf",
+              "48 hpf",
+              "72 hpf",
+              "4 dpf",
+              "5 dpf"
+            ],
+            "tickvals": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "ovary",
+              "zygote",
+              "cleavage",
+              "128-cell",
+              "1k-cell",
+              "dome",
+              "50% epiboly",
+              "shield",
+              "75% epiboly",
+              "1-4ss",
+              "14-19ss",
+              "20-25ss",
+              "24 hpf",
+              "30 hpf",
+              "36 hpf",
+              "48 hpf",
+              "72 hpf",
+              "4 dpf",
+              "5 dpf"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(51,51,51,1)",
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0.66417600664176,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(77,77,77,1)",
+              "family": "",
+              "size": 15.9402241594022
+            },
+            "tickangle": -30,
+            "showline": false,
+            "linecolor": null,
+            "linewidth": 0,
+            "showgrid": true,
+            "gridcolor": "rgba(235,235,235,1)",
+            "gridwidth": 0.66417600664176,
+            "zeroline": false,
+            "anchor": "y",
+            "title": {
+              "text": "developmental stage",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 14.6118721461187
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              0.15825952335228,
+              3.19222960751641
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "1",
+              "2",
+              "3"
+            ],
+            "tickvals": [
+              1,
+              2,
+              3
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "1",
+              "2",
+              "3"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(51,51,51,1)",
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0.66417600664176,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(77,77,77,1)",
+              "family": "",
+              "size": 11.689497716895
+            },
+            "tickangle": 0,
+            "showline": false,
+            "linecolor": null,
+            "linewidth": 0,
+            "showgrid": true,
+            "gridcolor": "rgba(235,235,235,1)",
+            "gridwidth": 0.66417600664176,
+            "zeroline": false,
+            "anchor": "x",
+            "title": {
+              "text": "log-scaled gene expression (read counts)",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 14.6118721461187
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "shapes": [
+            {
+              "type": "rect",
+              "fillcolor": "transparent",
+              "line": {
+                "color": "rgba(51,51,51,1)",
+                "width": 0.66417600664176,
+                "linetype": "solid"
+              },
+              "yref": "paper",
+              "xref": "paper",
+              "x0": 0,
+              "x1": 1,
+              "y0": 0,
+              "y1": 1
+            }
+          ],
+          "showlegend": true,
+          "legend": {
+            "bgcolor": "rgba(255,255,255,1)",
+            "bordercolor": "transparent",
+            "borderwidth": 1.88976377952756,
+            "font": {
+              "color": "rgba(0,0,0,1)",
+              "family": "",
+              "size": 11.689497716895
+            },
+            "y": 0.93503937007874
+          },
+          "annotations": [
+            {
+              "text": "gene",
+              "x": 1.02,
+              "y": 1,
+              "showarrow": false,
+              "ax": 0,
+              "ay": 0,
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 14.6118721461187
+              },
+              "xref": "paper",
+              "yref": "paper",
+              "textangle": 0,
+              "xanchor": "left",
+              "yanchor": "bottom",
+              "legendTitle": true
+            }
+          ],
+          "hovermode": "closest",
+          "barmode": "relative"
+        },
+        "config": {
+          "doubleClick": "reset",
+          "showSendToCloud": false
+        },
+        "source": "A",
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "1.11.3",
+          "src": {
+            "href": "jquery-1.11.3"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.0.0",
+          "src": {
+            "href": "crosstalk-1.0.0"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.css",
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "1.46.1",
+          "src": {
+            "href": "plotly-htmlwidgets-css-1.46.1"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "1.46.1",
+          "src": {
+            "href": "plotly-main-1.46.1"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
