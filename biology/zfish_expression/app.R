@@ -38,7 +38,7 @@ stages <- read.table("data/sample-stage.txt", header = T, stringsAsFactors = F, 
 stages <- stages$stage
 
 #choose a random number for spinner type
-n <- round(runif(1,1,8),0)
+n <- 7
 
 ui <- shinyUI(fluidPage(
   
