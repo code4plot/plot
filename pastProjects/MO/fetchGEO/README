@@ -1,0 +1,5 @@
+fetch_GSMraw.R takes in GSEList.txt and GSEList_update.txt.
+The input files contain list of GSM accession numbers for this study.
+fetch_GSMraw.R then connects to GEO to retrieve the raw microarray files.
+
+retrieve_db2db.py retrieves gene name from a list of Agilent probe names (completeProbeList.txt).
