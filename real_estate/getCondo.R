@@ -8,5 +8,7 @@ condo = subset(rawDat, noOfBedRoom != "NA")
 
 #keep columns: project, areaSqft, leaseDate, district, noOfBedRoom, rent, psf
 condo = condo[,c("project","areaSqft","leaseDate","district","noOfBedRoom","rent","psf")]
+condo = condo[,c("areaSqft","leaseDate","district","noOfBedRoom","rent","psf")]
 
 write.csv(condo, "rentalPlot/data/condo_191028.csv", row.names = F)
+saveRDS(condo, "rentalPlot/byDistrict/data/district.rds")
