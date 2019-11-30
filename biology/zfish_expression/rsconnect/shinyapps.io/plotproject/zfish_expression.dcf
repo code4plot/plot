@@ -5,9 +5,9 @@ account: plotproject
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1405188
-bundleId: 2575563
+bundleId: 2575630
 url: https://plotproject.shinyapps.io/zfish_expression/
-when: 1573281982.48918
+when: 1573285459.83028
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: app_archive.R|app2.R|helpers.R|plotExpression.R|plotExpression_v2.R|rawDat.R|split_expression.r|zfish.txt|data/genes.RDS|data/zfish_expression.txt|tests/mytest.R|tests/mytest-expected/001.json|tests/mytest-expected/001.png|archive
+ignoredFiles: plotExpression.R|plotExpression_v2.R|rawDat.R|split_expression.r|data/zfish_expression.txt|tests/mytest.R|tests/mytest-expected/001.json|tests/mytest-expected/001.png|archive
