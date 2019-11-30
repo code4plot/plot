@@ -1,0 +1,5 @@
+limma_agilent_processing.R normalizes agilent microarray files and then perform statistical testing.
+
+it contains functions to deal with single- and dual-channel arrays.
+
+The metaanalysis portion is to retrieve the FC and q-values of genes of interest (e.g. ISGs and IFNs)
