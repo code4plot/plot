@@ -45,8 +45,9 @@ assignQ = function(x){
 	return(result)
 }
 
+
 #parseDate takes mmyy date and returns yyQx, where x is the Quarter
-parseDate = function(x){
+parseDate = function(x, Quarter = T){
 	x = as.character(x)
 	temp = unlist(strsplit(x,""))
 	if(length(temp) == 4){
@@ -56,8 +57,12 @@ parseDate = function(x){
 		month = temp[1]
 		year = paste(temp[2],temp[3], sep = "")
 	}
-	Q = assignQ(month)
-	result = paste(year,Q, sep = "")
+	if(Quarter == T){
+	  Q = assignQ(month)
+	  result = paste(year,Q, sep = "")
+	} else {
+	  result <- paste(year,month,sep = "/")
+	}
 	return(result)
 }
 
@@ -92,9 +97,11 @@ rawDat$areaSqft = unlist(lapply(rawDat$areaSqft, binArea))
 psf = as.numeric(rawDat$rent)/rawDat$areaSqft
 rawDat = cbind(rawDat, psf = psf)
 
-#convert leaseDate (mmyy) to new format with parseDate
+#assign leaseDate (mmyy) to quarters
 rawDat$leaseDate = unlist(lapply(rawDat$leaseDate, parseDate))
+#convert leaseDat (mmyy) to (yy/mm)
+rawDat$leaseDate = unlist(lapply(rawDat$leaseDate, function(x) parseDate(x,F)))
 
-write.csv(rawDat, "rawDat_191028.csv", row.names = F)
+saveRDS(rawDat,"rentalPlot/byDistrict/data/district.rds")
 
 
