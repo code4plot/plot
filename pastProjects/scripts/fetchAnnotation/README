@@ -1,0 +1,2 @@
+annotate_gene_bed.py takes in a list of genomic coordinates and return corresponding Ensembl gene ids that the coordinates overlap.
+example input "heart_expression_SR.bed"

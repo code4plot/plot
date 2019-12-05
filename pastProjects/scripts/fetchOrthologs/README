@@ -1,0 +1,2 @@
+ortholog_genes.py take in a list of gene symbols (human) and fetches orthologs of zebrafish, mouse and fruit fly.
+example input - "test"
