@@ -1,2 +1,0 @@
-snpeff annotation
-gsea snp classes to david
