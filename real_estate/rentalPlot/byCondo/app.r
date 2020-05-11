@@ -2,7 +2,7 @@ library(shiny)
 library(plotly)
 
 #load data file
-condo = readRDS("data/condo.RDS")
+condo = readRDS("data/condo.rds")
 condo$noOfBedRoom = as.factor(condo$noOfBedRoom)
 condo$leaseDate = as.factor(condo$leaseDate)
 

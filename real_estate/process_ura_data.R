@@ -3,6 +3,9 @@
 library(jsonlite)
 library(plyr)
 
+#define input file
+inputFile = "19q4.json"
+
 #parseLine converts the list object from read_json into a data.frame object
 parseLine = function(theList) {
 	results <- cbind(as.data.frame(theList[1:4]),
@@ -67,7 +70,7 @@ parseDate = function(x, Quarter = T){
 }
 
 #load .json file from URA
-dat = read_json("ura_rent_191012.json",flatten=F)
+dat = read_json(inputFile,flatten=F)
 dat = dat$Result
 
 #initiate data.frame object
@@ -90,6 +93,8 @@ for(i in 1:length(dat)){
 	}
 }
 
+
+
 #convert binned area (e.g. 300-400) to its midpoint (e.g. 350)
 rawDat$areaSqft = unlist(lapply(rawDat$areaSqft, binArea))
 
@@ -99,6 +104,8 @@ rawDat = cbind(rawDat, psf = psf)
 
 #assign leaseDate (mmyy) to quarters
 rawDat$leaseDate = unlist(lapply(rawDat$leaseDate, parseDate))
+saveRDS(rawDat, gsub(".json",".rds",inputFile))
+
 #convert leaseDat (mmyy) to (yy/mm)
 rawDat$leaseDate = unlist(lapply(rawDat$leaseDate, function(x) parseDate(x,F)))
 

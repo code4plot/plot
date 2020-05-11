@@ -1,4 +1,4 @@
-rawDat = read.csv("rawDat_191028.csv", stringsAsFactors = F)
+rawDat = readRDS("rawDat_19q4.rds")
 
 #subset condominiums only
 condo = subset(rawDat, propertyType %in% c("Non-landed Properties","Executive Condominium"))
@@ -8,7 +8,8 @@ condo = subset(rawDat, noOfBedRoom != "NA")
 
 #keep columns: project, areaSqft, leaseDate, district, noOfBedRoom, rent, psf
 condo = condo[,c("project","areaSqft","leaseDate","district","noOfBedRoom","rent","psf")]
-condo = condo[,c("areaSqft","leaseDate","district","noOfBedRoom","rent","psf")]
+condo$rent <- as.numeric(condo$rent)
+saveRDS(condo, "rentalPlot/byCondo/data/condo.rds")
 
-write.csv(condo, "rentalPlot/data/condo_191028.csv", row.names = F)
+condo = condo[,c("areaSqft","leaseDate","district","noOfBedRoom","rent","psf")]
 saveRDS(condo, "rentalPlot/byDistrict/data/district.rds")
