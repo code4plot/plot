@@ -1,0 +1,6 @@
+install.packages("shiny", dependencies=TRUE)  
+install.packages("ibmdbR", dependencies=TRUE)  
+install.packages("plotly", dependencies=TRUE)  
+#install.packages("wordcloud", dependencies=TRUE)  
+#install.packages("markovchain", dependencies=TRUE)  
+#install.packages("memoise", dependencies=TRUE)

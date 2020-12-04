@@ -1,0 +1,11 @@
+---
+applications:  
+- name: ura_rental
+  memory: 256M
+  instances: 1
+  buildpacks: 
+    - https://github.com/cloudfoundry/r-buildpack.git
+  env:
+    CRAN_MIRROR: https://cran.rstudio.com
+    CF_STAGING_TIMEOUT: 9999
+    CF_STARTUP_TIMEOUT: 9999
