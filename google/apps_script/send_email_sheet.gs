@@ -22,4 +22,8 @@ function sendEmails() {
     var subject = 'a test message';
     MailApp.sendEmail(emailAddress, subject, message);
   }
+  // mark as sent
+  var colStart = colStart + numCols;
+  var mark = sheet.getRange(lastRow, colStart);
+  mark.setValue('sent');
 }
