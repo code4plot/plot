@@ -1,4 +1,5 @@
-
+*.json
+*.rds
 *.dcf
 *.dcf
 biology/zfish_expression/rsconnect/shinyapps.io/plotproject/zfish_expression.dcf
