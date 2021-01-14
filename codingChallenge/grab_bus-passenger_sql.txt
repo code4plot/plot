@@ -1,0 +1,14 @@
+WITH catch AS (
+    SELECT p.id pid, MIN(CAST(b.time AS TIME)) btime
+    FROM passengers p
+    LEFT JOIN buses b ON 
+    p.origin = b.origin AND p.destination = b.destination AND
+    CAST(p.time AS TIME) <= CAST(b.time AS TIME)
+    GROUP BY pid
+)
+SELECT b.id id, COUNT(b.id) passengers_on_board
+FROM buses b
+LEFT JOIN catch c ON
+CAST(b.time AS TIME) = c.btime 
+GROUP BY b.id
+ORDER BY b.id
